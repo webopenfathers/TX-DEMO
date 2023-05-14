@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      background: rgb(231, 230, 230);
+    }
+    .container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+
+    section {
+      height: 100vh;
+      background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+      display: grid;
+      place-items: center;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <section>1</section>
+      <section>2</section>
+      <section>3</section>
+      <section>4</section>
+      <section>5</section>
+      <section>6</section>
+      <section>7</section>
+      <section>8</section>
+      <section>9</section>
+    </div>
+  </body>
+</html>
