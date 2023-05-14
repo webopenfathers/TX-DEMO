@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      html,
+      body {
+        width: 100vw;
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .content {
+        width: 1200px;
+        height: 600px;
+        background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+        border-radius: 8px;
+        font-size: 30px;
+        text-align: center;
+        line-height: 500px;
+        margin-top: 20px;
+        color: #fff;
+        /* 添加过度效果 */
+        transition: transform 0.5s ease;
+      }
+
+      /* 奇数盒子 */
+      .content:nth-child(odd) {
+        transform: translateX(200%);
+      }
+
+      /* 偶数盒子 */
+      .content:nth-child(even) {
+        transform: translateX(-200%);
+      }
+
+      .content.content-center {
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="content">内容1</div>
+    <div class="content">内容2</div>
+    <div class="content">内容3</div>
+    <div class="content">内容4</div>
+  </body>
+
+  <script>
+    window.onload = function () {
+      scrollLoadEvent();
+    };
+    window.addEventListener('scroll', scrollLoadEvent);
+    function scrollLoadEvent() {
+      let contents = document.querySelectorAll('.content');
+      let targetValue = window.innerHeight * 0.8;
+
+      contents.forEach(function (content) {
+        let contentTop = content.getBoundingClientRect().top;
+        if (contentTop <= targetValue - 100) {
+          content.classList.add('content-center');
+        } else {
+          content.classList.remove('content-center');
+        }
+      });
+    }
+  </script>
+</html>
