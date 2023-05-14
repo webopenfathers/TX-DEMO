@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ch-ZN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--采用flex布局-->
+    <style>
+      html {
+        font: 15px;
+      }
+      html,
+      body {
+        height: 100%;
+        background: #343746;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .boxtype {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 490px;
+        height: 672px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: fixed;
+        /*背景*/
+        background-image: url(./img/flower.jpg);
+      }
+      /*毛玻璃样式*/
+      #box1 {
+        color: rgb(255, 255, 255);
+        padding: 2%;
+        width: 330px;
+        height: 400px;
+        box-shadow: 0 8px 32px 0 rgba(103, 223, 234, 0.37);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        /* background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%); */
+        background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+      }
+    </style>
+    <script>
+      //str填充内容，利用<作为换行符
+      let textStr =
+        '......她喜欢吃辣，喜欢卤味，最喜欢螺蛳粉,她的麻辣烫和烤鱼里总要放一块面，她喜欢在风景好的地方相遇。/她喜欢奶茶，有时候是奶绿，有时候是奶盖，有时候是霓裳茶舞，她要的只是三分糖，可以加的是珍珠。/她喜欢水果捞,爱加酸奶和芋圆，不喜欢水果捞里的爆珠，可以放烧仙草但不会加椰果。/......我的记性很差，所以每次发消息都会下意识地先点到你的聊天框，然后再想起来要做什么。/......后来才发现，不知从什么时候开始，我的生活已经全部都倾倒在细雨和花丛中。';
+      let strp = '';
+      let i = 0;
+
+      // 实现自动打字效果
+      function print1() {
+        if (textStr[i] != '/') {
+          strp += textStr[i];
+          document.getElementById('box1').innerHTML = strp + '|';
+        } else {
+          document.getElementById('box1').innerHTML = strp + '<br><br>' + '|';
+          strp += '<br><br>';
+        }
+        i++;
+      }
+
+      // print2是最后的光标闪动效果
+      function print2() {
+        setTimeout(() => {
+          document.getElementById('box1').innerHTML = strp + ' ';
+        }, 100);
+        setTimeout(() => {
+          document.getElementById('box1').innerHTML = strp + '|';
+        }, 600);
+      }
+
+      // setInterval函数控制打字速度
+      let printid = setInterval(() => {
+        print1();
+        if (i == textStr.length) clearInterval(printid);
+      }, 90);
+
+      // 利用光标闪动速度，默认模拟电脑正常光标闪动
+      setTimeout(() => {
+        id = setInterval(print2, 1060); //注意setInterval内部直接写函数的时候是直接写函数名不加括号的。
+      }, (textStr.length - 1) * 90);
+    </script>
+  </head>
+  <body>
+    <div class="boxtype">
+      <div id="box1"></div>
+    </div>
+  </body>
+</html>
